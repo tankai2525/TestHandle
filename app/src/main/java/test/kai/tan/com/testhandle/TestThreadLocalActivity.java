@@ -1,7 +1,10 @@
 package test.kai.tan.com.testhandle;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 /**
@@ -18,7 +21,9 @@ public class TestThreadLocalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_thread_local);
-        testThreadLocal();
+//        testThreadLocal();
+
+        new TestThread().start();
     }
 
     private void testThreadLocal() {
@@ -36,7 +41,6 @@ public class TestThreadLocalActivity extends AppCompatActivity {
         }
     }
 
-
     private class Hot1Thread extends Thread {
         @Override
         public void run() {
@@ -53,5 +57,27 @@ public class TestThreadLocalActivity extends AppCompatActivity {
             mThreadLocal.set("武老师");
             hot2 = mThreadLocal.get();
         }
+    }
+
+    private class TestThread extends Thread {
+
+        @Override
+        public void run() {
+            super.run();
+            Looper.prepare();
+            Handler handler = new Handler(){
+                @Override
+                public void handleMessage(Message msg) {
+                    super.handleMessage(msg);
+                    Log.d("tag","--------testThread");
+                }
+            };
+            Looper.loop();
+
+            handler.sendEmptyMessage(1);
+
+
+        }
+
     }
 }
