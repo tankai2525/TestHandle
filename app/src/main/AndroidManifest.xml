@@ -15,7 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TestThreadLocalActivity"></activity>
+        <activity android:name=".TestThreadLocalActivity" />
+        <activity android:name=".OutMemoryActivity" />
+        <activity android:name=".GoodHandleActivity"></activity>
     </application>
 
 </manifest>

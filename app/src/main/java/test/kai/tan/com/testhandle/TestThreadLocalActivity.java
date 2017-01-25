@@ -72,9 +72,8 @@ public class TestThreadLocalActivity extends AppCompatActivity {
                     Log.d("tag","--------testThread");
                 }
             };
-            Looper.loop();
-
             handler.sendEmptyMessage(1);
+            Looper.loop();
 
 
         }

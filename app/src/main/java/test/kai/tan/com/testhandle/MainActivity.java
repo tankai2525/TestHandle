@@ -12,10 +12,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         open(TestThreadLocalActivity.class);
+//        open(OutMemoryActivity.class);
     }
 
-    private void open(Class c){
-        Intent intent= new Intent(this, c);
+    private void open(Class c) {
+        Intent intent = new Intent(this, c);
         startActivity(intent);
     }
 }
