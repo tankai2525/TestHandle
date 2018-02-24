@@ -11,8 +11,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        open(TestThreadLocalActivity.class);
+//        open(TestThreadLocalActivity.class);
 //        open(OutMemoryActivity.class);
+        open(StateActivity.class);
     }
 
     private void open(Class c) {

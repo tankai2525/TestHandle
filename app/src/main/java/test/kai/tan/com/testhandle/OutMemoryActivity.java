@@ -44,11 +44,18 @@ public class OutMemoryActivity extends AppCompatActivity {
             }
         },20*1000);
         //3 new Runnable(){}会封装成Message的callback,message会持有Runnable引用。
-        //4 在入队的方法中messagequeue的target会指向handler messagequeue持有handler引用
+        //4 在入队的方法中message的target会指向handler messagequeue持有handler引用
         //所以Message和messagequeue间接持有activity引用
 
         //如果：进入该activity20秒内，旋转屏幕导致activity重绘。runnable还未执行，message仍持有runnable的引用，
         // 而runnable持有activity引用，故activity不能被回收。
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //处理内存泄漏
+        mHandler.removeCallbacksAndMessages(null);
     }
 }
